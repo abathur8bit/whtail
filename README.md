@@ -38,5 +38,3 @@ File colors will appear in the following colors: red, green, yellow, blue, purpl
 bright version of those colors.
 
 Colors are produced using `ansi` colors, so the terminal needs to support `ansi`.
-
-https://weatheredhiker.com
