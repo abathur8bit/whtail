@@ -1,2 +1,2 @@
-# whtail
-A dart tail utility that can monitor several files at once, and print the contents in a different color. 
+A sample command-line application with an entrypoint in `bin/`, library code
+in `lib/`, and example unit test in `test/`.
