@@ -2,8 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:args/args.dart';
+import 'package:whtail/version.dart';
 
 Future<void> main(List<String> arguments) async {
   final parser = ArgParser()
@@ -82,6 +84,8 @@ Future<void> main(List<String> arguments) async {
 
 void _printUsage(ArgParser parser) {
   stdout.writeln('Usage: dart run whtail.dart [options] file1 [file2 ...]');
+  stdout.writeln("Version $appVersion");
+  stdout.writeln("Written by the Weathered Hiker");
   stdout.writeln();
   stdout.writeln('Examples:');
   stdout.writeln('  dart run whtail.dart app.log');

@@ -1,5 +1,5 @@
 name: whtail
-description: A sample command-line application.
+description: A dart **tail** utility that can monitor several files at once, and print the contents in different colors.
 version: 1.0.0
 # repository: https://github.com/my_org/my_repo
 
@@ -9,6 +9,7 @@ environment:
 # Add regular dependencies here.
 dependencies:
   path: ^1.9.0
+  args: ^2.7.0
 
 dev_dependencies:
   lints: ^6.0.0
