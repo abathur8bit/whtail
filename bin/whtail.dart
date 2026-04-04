@@ -19,7 +19,13 @@ Future<void> main(List<String> arguments) async {
       'directory',
       abbr: 'd',
       negatable: false,
-      help: "Don't watch the parent directory so recreated/rotated files are reattached.",
+      help: "Don't watch the parent directory, so recreated/rotated files are not reattached.",
+    )
+    ..addFlag(
+      'nocolor',
+      abbr: 'c',
+      negatable: false,
+      help: "Turn off colors",
     )
     ..addFlag(
       'help',
@@ -52,16 +58,16 @@ Future<void> main(List<String> arguments) async {
     exitCode = 64;
     return;
   }
-
+  final useColor = !((args['nocolor'] as bool)??true);
   final follow = args['follow'] as bool;
-  final watchDirectory = !args['directory'] as bool;
+  final watchDirectory = !args['directory'] as bool; //if you specify --directory, don't watch
 
   final watchers = <ColoredTailTarget>[
     for (int i = 0; i < files.length; i++)
       ColoredTailTarget(
         displayPath: files[i],
         file: File(files[i]),
-        color: ((i % 15) + 1),
+        color: useColor ? (((i+6) % 15)+1) : 0,
         watchDirectory: watchDirectory,
       ),
   ];
@@ -266,10 +272,15 @@ class ColoredTailTarget {
   }
 
   void _printColored(String line) {
-    stdout.write('\x1b[38;5;${color}m');
+    if(color>0) {
+      stdout.write('\x1b[38;5;${color}m');
+    }
     stdout.write('[$displayPath] ');
     stdout.write(line);
-    stdout.write('\x1b[0m\n');
+    if(color>0) {
+      stdout.write('\x1b[0m');
+    }
+    stdout.write("\n");
   }
 }
 
