@@ -19,7 +19,7 @@ Future<void> main(List<String> arguments) async {
       'directory',
       abbr: 'd',
       negatable: false,
-      help: 'Also watch the parent directory so recreated/rotated files are reattached.',
+      help: "Don't watch the parent directory so recreated/rotated files are reattached.",
     )
     ..addFlag(
       'help',
@@ -54,7 +54,7 @@ Future<void> main(List<String> arguments) async {
   }
 
   final follow = args['follow'] as bool;
-  final watchDirectory = args['directory'] as bool;
+  final watchDirectory = !args['directory'] as bool;
 
   final watchers = <ColoredTailTarget>[
     for (int i = 0; i < files.length; i++)
