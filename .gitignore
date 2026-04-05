@@ -4,3 +4,4 @@
 *.lock
 /.idea/
 /version-build.json
+/deployer.json
