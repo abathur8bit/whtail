@@ -3,11 +3,11 @@ A dart **tail** utility that can monitor several files at once, and print the co
 
 I created this utility because the existing `tail` command wasn't cutting it. While it does support 
 multiple files, the header that it always shows and lack of colors made following multiple files 
-unpleasant. When I tried `multitail`, didn't like it. `lnav` was almost usable except it 
-would segfault all the time.
+unpleasant. `multitail` I didn't like and `lnav` was interesting except it 
+would segfault all the time. 
 
 So after having to deal with production support issue, and having to have 4 windows open to tail 4 
-files, I decided it was time to open a ChatGPT prompt and create my own quick utility.
+files, I decided it was time to open a ChatGPT prompt and create my own tail utility.
 
 ## Usage
 If you specify the `-d` option, you can start watching file that hasn't been created yet.
