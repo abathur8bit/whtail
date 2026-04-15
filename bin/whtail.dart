@@ -7,6 +7,13 @@ import 'dart:typed_data';
 import 'package:args/args.dart';
 import 'package:whtail/version.dart';
 
+bool get isCompiledExecutable {
+  final exe = Platform.resolvedExecutable.toLowerCase();
+  return !exe.endsWith('dart') && !exe.endsWith('dart.exe');
+}
+bool get isRunningFromDartRun => !isCompiledExecutable;
+String executable = 'whtail';  //default to an executable
+
 Future<void> main(List<String> arguments) async {
   final parser = ArgParser()
     ..addFlag(
@@ -89,16 +96,24 @@ Future<void> main(List<String> arguments) async {
 }
 
 void _printUsage(ArgParser parser) {
-  stdout.writeln('Usage: dart run whtail.dart [options] file1 [file2 ...]');
-  stdout.writeln("Version $appVersion");
-  stdout.writeln("Written by the Weathered Hiker");
-  stdout.writeln();
-  stdout.writeln('Examples:');
-  stdout.writeln('  dart run whtail.dart app.log');
-  stdout.writeln('  dart run whtail.dart -f app.log ../other.log /var/log/syslog');
-  stdout.writeln('  dart run whtail.dart -f -d app.log');
-  stdout.writeln();
+  if(isRunningFromDartRun) {
+    executable = "dart run bin/whtail.dart"; //running from dart, not an executable
+  }
+  stdout.writeln("A tail utility that can monitor several files at once, and print the contents in different colors.");
+  stdout.writeln("Version: $appVersion");
+  stdout.writeln("");
+  stdout.writeln("Homepage: https://weatheredhiker.com/pages/whtail.html");
+  stdout.writeln("Source  : https://github.com/abathur8bit/whtail");
+  stdout.writeln("Issues  : https://github.com/abathur8bit/whtail/issues");
+  stdout.writeln("");
+  stdout.writeln('Usage: $executable [options] file1 [file2 ...]');
+  stdout.writeln("");
   stdout.writeln(parser.usage);
+  stdout.writeln("");
+  stdout.writeln("Examples:");
+  stdout.writeln("  $executable app.log");
+  stdout.writeln("  $executable -f app.log ../other.log /var/log/syslog");
+  stdout.writeln("  $executable -f -d app.log");
 }
 
 class ColoredTailTarget {

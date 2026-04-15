@@ -10,8 +10,6 @@ So after having to deal with production support issue, and having to have 4 wind
 files, I decided it was time to open a ChatGPT prompt and create my own tail utility.
 
 ## Usage
-If you specify the `-d` option, you can start watching file that hasn't been created yet.
-
 ```
 C:> whtail --help
 Usage: dart run whtail.dart [options] file1 [file2 ...]
