@@ -1,27 +1,27 @@
 # whtail cli utility
 A dart **tail** utility that can monitor several files at once, and print the contents in different colors.
 
-I created this utility because the existing `tail` command wasn't cutting it. While it does support 
-multiple files, the header that it always shows and lack of colors made following multiple files 
-unpleasant. `multitail` I didn't like and `lnav` was interesting except it 
-would segfault all the time. 
-
-So after having to deal with production support issue, and having to have 4 windows open to tail 4 
-files, I decided it was time to open a ChatGPT prompt and create my own tail utility.
-
 ## Usage
 ```
 C:> whtail --help
-Usage: dart run whtail.dart [options] file1 [file2 ...]
+A tail utility that can monitor several files at once, and print the contents in different colors.
+Version: 1.1.0
 
-Examples:
-  dart run whtail.dart app.log
-  dart run whtail.dart -f app.log ../other.log /var/log/syslog
-  dart run whtail.dart -f -d app.log
+Homepage: https://weatheredhiker.com/pages/whtail.html
+Source  : https://github.com/abathur8bit/whtail
+Issues  : https://github.com/abathur8bit/whtail/issues
+
+Usage: whtail [options] file1 [file2 ...]
 
 -f, --follow       Print the last 10 lines, then continue following changes.
--d, --directory    Also watch the parent directory so recreated/rotated files are reattached.
+-d, --directory    Don't watch the parent directory, so recreated/rotated files are not reattached.
+-c, --nocolor      Turn off colors
 -h, --help         Show help.
+
+Examples:
+  whtail app.log
+  whtail -f app.log ../other.log /var/log/syslog
+  whtail -f -d app.log
 ```
 
 ## Compile to Linux and Windows:
@@ -37,4 +37,4 @@ bright version of those colors.
 
 Colors are produced using `ansi` colors, so the terminal needs to support `ansi`.
 
-https://weatheredhiker.com/
+https://weatheredhiker.com/pages/whtail.html
