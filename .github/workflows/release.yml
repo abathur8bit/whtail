@@ -20,10 +20,17 @@ jobs:
             label: Linux
             target: linux-x64
             binary_name: whtail
-          - os: macos-latest
-            label: macOS
+
+          - os: macos-15-intel
+            label: macOS Intel
             target: macos-x64
             binary_name: whtail
+
+          - os: macos-latest
+            label: macOS Apple Silicon
+            target: macos-arm64
+            binary_name: whtail
+
           - os: windows-latest
             label: Windows
             target: windows-x64
